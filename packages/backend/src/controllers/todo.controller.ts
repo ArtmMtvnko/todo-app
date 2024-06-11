@@ -14,6 +14,13 @@ export class TodoController {
 		res.send(todos);
 	}
 
+	async getTodoById(_: Request, res: Response): Promise<void> {
+		const id = Number(_.params.id);
+
+		const todo = await this.todoService.findById(id);
+		res.send(todo);
+	}
+
 	async createTodo(_: Request, res: Response): Promise<void> {
 		const todo: Omit<TodoType, 'id'> = {
 			title: _.body.title,
