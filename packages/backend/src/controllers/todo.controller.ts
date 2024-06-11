@@ -1,6 +1,7 @@
 import { Response, Request } from 'express';
 import TodoService from '@/services/todo.service';
 import { TodoType } from './../types/todos.type';
+import { prisma } from '@/services/prisma.service';
 
 export class TodoController {
 	constructor(private todoService: TodoService) {}
@@ -38,7 +39,17 @@ export class TodoController {
 
 		res.status(204).send('Todo has been deleted');
 	}
+
+	async updateTodo(_: Request, res: Response): Promise<void> {
+		const id = Number(_.params.id);
+
+		const newTodo: TodoType = _.body;
+
+		const updatedTodo = await this.todoService.updateTodo(id, newTodo);
+
+		res.send(updatedTodo);
+	}
 }
 
-const todoController = new TodoController(new TodoService());
+const todoController = new TodoController(new TodoService(prisma));
 export default todoController;

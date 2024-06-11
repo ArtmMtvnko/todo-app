@@ -12,4 +12,6 @@ todosRouter.post('/', todoController.createTodo.bind(todoController));
 
 todosRouter.delete('/:id', todoController.deleteTodo.bind(todoController));
 
+todosRouter.put('/:id', todoController.updateTodo.bind(todoController));
+
 export default todosRouter;
