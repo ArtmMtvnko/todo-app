@@ -13,6 +13,16 @@ export class TodoController {
 		const todos: TodoType[] = await this.todoService.findAll();
 		res.send(todos);
 	}
+
+	async createTodo(_: Request, res: Response): Promise<void> {
+		const todo: Omit<TodoType, 'id'> = {
+			title: _.body.title,
+			content: _.body.content,
+		};
+
+		const newTodo = await this.todoService.createTodo(todo);
+		res.send(newTodo);
+	}
 }
 
 const todoController = new TodoController(new TodoService());

@@ -9,7 +9,7 @@ export default class TodoService {
 		return todos;
 	}
 
-	async createTodo(todo: TodoType): Promise<TodoType> {
+	async createTodo(todo: Omit<TodoType, 'id'>): Promise<TodoType> {
 		const newTodo = await this.prisma.todo.create({
 			data: todo,
 		});
