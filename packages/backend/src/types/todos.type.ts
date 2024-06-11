@@ -3,3 +3,9 @@
 export type TodoType = {
 	data: string;
 };
+
+export type UserType = {
+	id: number;
+	email: string;
+	name: string | null;
+};
