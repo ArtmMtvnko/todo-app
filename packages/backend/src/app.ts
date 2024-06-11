@@ -17,22 +17,22 @@ app.get('/', (req: Request, res: Response) => {
 
 router.init();
 
-import { PrismaClient } from '@prisma/client';
-import { UserType } from './types/todos.type';
-const prisma = new PrismaClient();
+// import { PrismaClient } from '@prisma/client';
+// import { UserType } from './types/todos.type';
+// const prisma = new PrismaClient();
 
-async function testPrisma(): Promise<UserType> {
-	const newUser = await prisma.user.create({
-		data: {
-			name: 'test name',
-			email: 'uniqueemail@gmail.com',
-		},
-	});
+// async function testPrisma(): Promise<UserType> {
+// 	const newUser = await prisma.user.create({
+// 		data: {
+// 			name: 'test name',
+// 			email: 'uniqueemail@gmail.com',
+// 		},
+// 	});
 
-	return newUser;
-}
+// 	return newUser;
+// }
 
-console.log(testPrisma());
+// console.log(testPrisma());
 
 app.listen(port, () => {
 	console.log(`Now listening on port ${port}`);
