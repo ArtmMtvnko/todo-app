@@ -30,6 +30,14 @@ export class TodoController {
 		const newTodo = await this.todoService.createTodo(todo);
 		res.send(newTodo);
 	}
+
+	async deleteTodo(_: Request, res: Response): Promise<void> {
+		const id = Number(_.params.id);
+
+		await this.todoService.deleteTodoById(id);
+
+		res.status(204).send('Todo has been deleted');
+	}
 }
 
 const todoController = new TodoController(new TodoService());
