@@ -1,4 +1,4 @@
-import { TodoType } from '../types/todos.type';
+import { TodoType, TodoDtoType } from '../types/todos.type';
 import { PrismaClient } from '@prisma/client';
 
 export default class TodoService {
@@ -23,7 +23,7 @@ export default class TodoService {
 		return todo;
 	}
 
-	async createTodo(todo: Omit<TodoType, 'id'>): Promise<TodoType> {
+	async createTodo(todo: TodoDtoType): Promise<TodoType> {
 		const newTodo = await this.prisma.todo.create({
 			data: todo,
 		});
@@ -39,10 +39,7 @@ export default class TodoService {
 		});
 	}
 
-	async updateTodo(
-		id: number,
-		todo: Omit<TodoType, 'id'>,
-	): Promise<TodoType> {
+	async updateTodo(id: number, todo: TodoDtoType): Promise<TodoType> {
 		const { title, content } = todo;
 
 		const updatedTodo = await this.prisma.todo.update({

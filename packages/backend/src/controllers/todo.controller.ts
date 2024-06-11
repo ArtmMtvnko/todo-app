@@ -1,6 +1,6 @@
 import { Response, Request } from 'express';
 import TodoService from '@/services/todo.service';
-import { TodoType } from './../types/todos.type';
+import { TodoType, TodoDtoType } from './../types/todos.type';
 import { prisma } from '@/services/prisma.service';
 
 export class TodoController {
@@ -23,7 +23,7 @@ export class TodoController {
 	}
 
 	async createTodo(_: Request, res: Response): Promise<void> {
-		const todo: Omit<TodoType, 'id'> = {
+		const todo: TodoDtoType = {
 			title: _.body.title,
 			content: _.body.content,
 		};
@@ -42,11 +42,9 @@ export class TodoController {
 
 	async updateTodo(_: Request, res: Response): Promise<void> {
 		const id = Number(_.params.id);
-
 		const newTodo: TodoType = _.body;
 
 		const updatedTodo = await this.todoService.updateTodo(id, newTodo);
-
 		res.send(updatedTodo);
 	}
 }

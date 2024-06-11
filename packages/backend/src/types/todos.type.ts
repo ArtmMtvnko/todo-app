@@ -1,11 +1,9 @@
 // TODO: Put a real types here
-// import { Todo } from "@prisma/client";
+import { Todo } from '@prisma/client';
 
-export type TodoType = {
-	id: number;
-	title: string;
-	content: string;
-};
+export type TodoType = Todo;
+
+export type TodoDtoType = Omit<TodoType, 'id'>;
 
 export type UserType = {
 	id: number;
