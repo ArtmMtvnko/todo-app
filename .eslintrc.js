@@ -44,6 +44,7 @@ module.exports = {
         "endOfLine": "auto"
       }
     ]
+    // "prettier/prettier": "off"
   },
   overrides: [
     {
