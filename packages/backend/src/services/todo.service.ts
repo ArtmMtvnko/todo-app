@@ -40,15 +40,12 @@ export default class TodoService {
 	}
 
 	async updateTodo(id: number, todo: TodoDtoType): Promise<TodoType> {
-		const { title, content } = todo;
-
 		const updatedTodo = await this.prisma.todo.update({
 			where: {
 				id: id,
 			},
 			data: {
-				title,
-				content,
+				...todo,
 			},
 		});
 

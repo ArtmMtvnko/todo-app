@@ -7,10 +7,6 @@ export class TodoController {
 	constructor(private todoService: TodoService) {}
 
 	async getAllTodo(_: Request, res: Response): Promise<void> {
-		// TODO: Write your implementation here
-		// const todos = await this.todoService.findAll();
-		// res.send(todos);
-
 		const todos: TodoType[] = await this.todoService.findAll();
 		res.send(todos);
 	}
@@ -23,10 +19,7 @@ export class TodoController {
 	}
 
 	async createTodo(_: Request, res: Response): Promise<void> {
-		const todo: TodoDtoType = {
-			title: _.body.title,
-			content: _.body.content,
-		};
+		const todo: TodoDtoType = _.body;
 
 		const newTodo = await this.todoService.createTodo(todo);
 		res.send(newTodo);

@@ -8,7 +8,7 @@ const isExist = <T>(model: PrismaModel<T>) => {
 		next: NextFunction,
 	): Promise<void> => {
 		const id = Number(req.params.id);
-		// Todo: maybe it is not a good idea to check is id number, mb it can be as string
+
 		if (isNaN(id)) {
 			res.status(404).send({ error: 'malformatted id' });
 			return;
