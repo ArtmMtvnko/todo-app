@@ -38,6 +38,13 @@ module.exports = {
     'no-unused-vars': 'off',
     // indent: ['error', 'tab'],
     quotes: ['error', 'single'],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+    // "prettier/prettier": "off"
   },
   overrides: [
     {
