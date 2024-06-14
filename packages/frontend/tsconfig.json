@@ -42,6 +42,12 @@
 			],
 			"~/*": [
 				"src/*"
+			],
+			"~todos-desktop/*": [
+				"src/modules/todos-desktop/*"
+			],
+			"~types/*": [
+				"src/shared/types/*"
 			]
 		}
 	},

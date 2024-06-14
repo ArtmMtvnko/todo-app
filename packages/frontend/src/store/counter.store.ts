@@ -25,3 +25,9 @@ export const useCounterStore = create<ICounterStore>((set) => {
 		},
 	};
 });
+
+// interface ITodosStore {
+// 	todos: []
+// 	addTodo:
+// 	deleteTodo:
+// }
