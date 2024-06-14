@@ -1,5 +1,5 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { Todo } from '~shared/types/todo.type';
+import axios, { AxiosInstance } from 'axios';
+import { Todo, TodoDto } from '~shared/types/todo.type';
 
 class TodosService {
 	private axiosInstance: AxiosInstance;
@@ -8,8 +8,14 @@ class TodosService {
 		this.axiosInstance = axios.create({ baseURL });
 	}
 
-	public getAllTodos = (): Promise<AxiosResponse<Todo[]>> => {
-		return this.axiosInstance.get('/todos/all');
+	public getAllTodos = async (): Promise<Todo[]> => {
+		const response = await this.axiosInstance.get<Todo[]>('/todos/all');
+		return response.data;
+	};
+
+	public createTodo = async (todo: TodoDto): Promise<Todo> => {
+		const response = await this.axiosInstance.post<Todo>('/todos', todo);
+		return response.data;
 	};
 }
 

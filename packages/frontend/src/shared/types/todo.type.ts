@@ -7,3 +7,5 @@ export type Todo = {
 	createdAt: Date;
 	authorId: number;
 };
+
+export type TodoDto = Omit<Todo, 'id' | 'createdAt'>;
