@@ -48,6 +48,9 @@
 			],
 			"~types/*": [
 				"src/shared/types/*"
+			],
+			"~components/*": [
+				"src/modules/components/*"
 			]
 		}
 	},

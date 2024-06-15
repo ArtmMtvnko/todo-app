@@ -32,6 +32,7 @@ interface ITodosStore {
 	todos: Todo[];
 	getTodos: () => void;
 	addTodo: (todo: TodoDto) => void;
+	deleteTodo: (id: number) => void;
 }
 
 export const useTodosStore = create<ITodosStore>((set) => {
@@ -48,6 +49,14 @@ export const useTodosStore = create<ITodosStore>((set) => {
 			set((state) => {
 				return {
 					todos: [...state.todos, createdTodo],
+				};
+			});
+		},
+		deleteTodo: async (id: number): Promise<void> => {
+			await todosService.deleteTodo(id);
+			set((state) => {
+				return {
+					todos: state.todos.filter((todo) => todo.id !== id),
 				};
 			});
 		},

@@ -17,6 +17,10 @@ class TodosService {
 		const response = await this.axiosInstance.post<Todo>('/todos', todo);
 		return response.data;
 	};
+
+	public deleteTodo = async (id: number): Promise<void> => {
+		await this.axiosInstance.delete(`/todos/${id}`);
+	};
 }
 
 const todosService = new TodosService('http://127.0.0.1:3030/api');
