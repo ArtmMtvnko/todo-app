@@ -1,22 +1,27 @@
 import { Button, Dialog, DialogBody } from '@blueprintjs/core';
 import React from 'react';
-import { Todo } from '~shared/types/todo.type';
+import TodoForm from '../todo-form/todo-form.component';
 
 type TodoModalProps = {
-	close: () => void;
-	todo: Todo | null;
+	actionName: string;
+	isOpen: boolean;
+	setShownState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const TodoModal: React.FC<TodoModalProps> = ({ close, todo }) => {
+const TodoModal: React.FC<TodoModalProps> = ({
+	actionName,
+	isOpen,
+	setShownState,
+}) => {
 	return (
-		<Dialog isOpen={true}>
+		<Dialog isOpen={isOpen}>
 			<DialogBody>
-				<h1>{todo.title}</h1>
-				<p>Description:</p>
-				<p>{todo.content}</p>
-				<p>Comptele: {todo.completed.toString()}</p>
-				<p>Private: {todo.private.toString()}</p>
-				<Button onClick={close}>Close</Button>
+				{/* TODO: Make form validation, add styles for form */}
+				<TodoForm
+					actionName={actionName}
+					setShownState={setShownState}
+				/>
+				<Button onClick={() => setShownState(false)}>Close</Button>
 			</DialogBody>
 		</Dialog>
 	);
