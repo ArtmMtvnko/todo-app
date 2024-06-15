@@ -2,12 +2,21 @@ import { css } from '@emotion/css';
 import { colors } from '~shared/styles';
 
 export const tableStyles = css`
-	border: 1px solid ${colors.americanPurple};
+	border: 2px solid ${colors.black};
 	border-collapse: collapse;
-	width: 100%;
+	width: 85%;
+	margin: 0 auto;
 
-	& th {
+	& th,
+	td {
 		text-align: left;
+		border-left: 2px solid ${colors.black};
+	}
+`;
+
+export const tableHeadStyles = css`
+	& tr {
+		background-color: ${colors.fogGrey};
 	}
 `;
 
