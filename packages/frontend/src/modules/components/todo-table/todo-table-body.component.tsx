@@ -9,11 +9,7 @@ const TodoTableBody: React.FC = () => {
 	return (
 		<tbody className={tableBodyStyles}>
 			{todos.map((todo) => (
-				<TodoTableRow
-					key={todo.id}
-					title={todo.title}
-					description={todo.content}
-				/>
+				<TodoTableRow key={todo.id} todo={todo} />
 			))}
 		</tbody>
 	);

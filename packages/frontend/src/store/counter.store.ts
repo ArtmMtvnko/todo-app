@@ -2,13 +2,13 @@ import { create } from 'zustand';
 import todosService from '~shared/services/todos.service';
 import { Todo, TodoDto } from '~shared/types/todo.type';
 
-interface ICounterStore {
+interface CounterStore {
 	counter: number;
 	updateCounter: (offset: number) => () => void;
 	resetCounter: () => void;
 }
 
-export const useCounterStore = create<ICounterStore>((set) => {
+export const useCounterStore = create<CounterStore>((set) => {
 	return {
 		counter: 0,
 		updateCounter: (offset: number) => {
