@@ -34,7 +34,7 @@ const App = (): React.ReactNode => {
 	}, []);
 
 	return (
-		<>
+		<div style={{ maxWidth: 1240, margin: '0 auto' }}>
 			<h1>Todo project</h1>
 			<p>{count}</p>
 			<Button text="Increase" onClick={onIncrease} />
@@ -51,7 +51,7 @@ const App = (): React.ReactNode => {
 			{todoModalData.show && (
 				<TodoModal todo={todoModalData.todo} close={close} />
 			)}
-		</>
+		</div>
 	);
 };
 

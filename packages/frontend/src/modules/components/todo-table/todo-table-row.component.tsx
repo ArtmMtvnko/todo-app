@@ -19,7 +19,7 @@ const TodoTableRow: React.FC<TodoRowProps> = ({ todo }) => {
 				<TodoActionRow>
 					<Button onClick={() => open(todo)}>View</Button>
 					<Button>Delete</Button>
-					<Switch large={true} inline={true} />
+					<Switch large={true} style={{ margin: 0 }} />
 				</TodoActionRow>
 			</td>
 		</tr>

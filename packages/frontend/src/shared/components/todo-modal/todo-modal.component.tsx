@@ -12,6 +12,10 @@ const TodoModal: React.FC<TodoModalProps> = ({ close, todo }) => {
 		<Dialog isOpen={true}>
 			<DialogBody>
 				<h1>{todo.title}</h1>
+				<p>Description:</p>
+				<p>{todo.content}</p>
+				<p>Comptele: {todo.completed.toString()}</p>
+				<p>Private: {todo.private.toString()}</p>
 				<Button onClick={close}>Close</Button>
 			</DialogBody>
 		</Dialog>
