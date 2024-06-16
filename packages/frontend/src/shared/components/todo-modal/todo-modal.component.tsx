@@ -14,7 +14,7 @@ const TodoModal: React.FC<TodoModalProps> = ({
 	setShownState,
 }) => {
 	return (
-		<Dialog isOpen={isOpen}>
+		<Dialog isOpen={isOpen} style={{ width: '80vw' }}>
 			<DialogBody>
 				{/* TODO: Make form validation, add styles for form */}
 				<TodoForm

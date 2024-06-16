@@ -7,6 +7,11 @@ export const formStyles = css`
 		padding: 5px;
 		border-bottom: 1px solid ${colors.jetFighterGrey};
 		display: grid;
-		grid-template-columns: 1fr 3fr;
+		grid-template-columns: 1fr 4fr;
+	}
+
+	& textarea {
+		max-width: 900px;
+		max-height: 250px;
 	}
 `;

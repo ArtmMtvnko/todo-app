@@ -3,6 +3,7 @@ import React from 'react';
 import { Field, Form } from 'react-final-form';
 import { TodoDto } from '~shared/types/todo.type';
 import { formStyles } from './todo-form.styles';
+import { useTodosStore } from '~store/counter.store';
 
 type TodoFormProps = {
 	actionName: string;
@@ -10,6 +11,8 @@ type TodoFormProps = {
 };
 
 const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
+	const { addTodo } = useTodosStore();
+
 	const initialValue: TodoDto = {
 		title: '',
 		content: '',
@@ -20,6 +23,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
 
 	const submit = (values: TodoDto): void => {
 		console.log(values);
+		addTodo(values);
 		setShownState(false);
 	};
 
