@@ -38,4 +38,5 @@ export const colors = Object.freeze({
 	brilliantLavender: '#FABAF0',
 	bowAndArrowSilver: '#E8EBE9',
 	fogGrey: '#C0BCC4',
+	jetFighterGrey: '#909191',
 });

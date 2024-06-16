@@ -2,6 +2,7 @@ import { Button } from '@blueprintjs/core';
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 import { TodoDto } from '~shared/types/todo.type';
+import { formStyles } from './todo-form.styles';
 
 type TodoFormProps = {
 	actionName: string;
@@ -10,8 +11,8 @@ type TodoFormProps = {
 
 const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
 	const initialValue: TodoDto = {
-		title: 'New todo',
-		content: 'Some description',
+		title: '',
+		content: '',
 		completed: false,
 		private: false,
 		authorId: 1,
@@ -28,7 +29,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
 			initialValues={initialValue}
 			render={({ handleSubmit }) => {
 				return (
-					<form onSubmit={handleSubmit}>
+					<form className={formStyles} onSubmit={handleSubmit}>
 						<div>
 							<label>Title</label>
 							<Field
@@ -42,7 +43,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
 							<Field
 								name="content"
 								component="textarea"
-								placeholder="Enter description name"
+								placeholder="Enter description here"
 							/>
 						</div>
 						<div>
