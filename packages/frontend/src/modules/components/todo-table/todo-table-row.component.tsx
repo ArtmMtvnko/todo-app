@@ -13,8 +13,16 @@ const TodoTableRow: React.FC<TodoRowProps> = ({ todo }) => {
 
 	return (
 		<tr>
-			<td style={{ width: '15%' }}>{todo.title}</td>
-			<td style={{ width: '60%' }}>{todo.content}</td>
+			<td style={{ width: '15%' }}>
+				<span style={{ display: 'block', width: 100 }}>
+					{todo.title}
+				</span>
+			</td>
+			<td style={{ width: '60%' }}>
+				<span style={{ display: 'block', width: 600 }}>
+					{todo.content}
+				</span>
+			</td>
 			<td style={{ width: '25%' }}>
 				<TodoActionRow>
 					<Button onClick={() => open(todo)}>View</Button>

@@ -4,8 +4,8 @@ import { colors } from '~shared/styles';
 export const tableStyles = css`
 	border: 2px solid ${colors.black};
 	border-collapse: collapse;
-	width: 85%;
 	margin: 0 auto;
+	width: 100%;
 
 	& th,
 	td {
@@ -23,6 +23,12 @@ export const tableHeadStyles = css`
 export const tableBodyStyles = css`
 	& td {
 		padding: 10px;
+
+		& > span {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
 	}
 
 	& tr:nth-child(2n) {

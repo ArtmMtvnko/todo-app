@@ -25,10 +25,10 @@ const TodoForm: React.FC<TodoFormProps> = ({
 	};
 
 	const submit = (values: TodoDto): void => {
-		const error = todoSchema.validate(values, { abortEarly: true });
+		const { error } = todoSchema.validate(values, { abortEarly: true });
 
 		if (error) {
-			alert(error.error.message);
+			alert(error.message);
 			return;
 		}
 
