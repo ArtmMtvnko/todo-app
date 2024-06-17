@@ -51,6 +51,9 @@
 			],
 			"~components/*": [
 				"src/modules/components/*"
+			],
+			"~joi-schemas/*": [
+				"src/shared/joi-schemas/*"
 			]
 		}
 	},

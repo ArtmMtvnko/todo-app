@@ -21,7 +21,7 @@ todosService.getAllTodos().then((data) => console.log(data)); // to delete
 // 	.then((data) => console.log(data)); // to delete
 const App = (): React.ReactNode => {
 	const [count, setCount] = React.useState(0);
-	const { getTodos } = useTodosStore();
+	const { getTodos, addTodo } = useTodosStore();
 	const [showTodoModal, setShowTodoModal] = React.useState(false);
 	const { todoModalData, close } = useTodoModalStore();
 
@@ -51,6 +51,7 @@ const App = (): React.ReactNode => {
 			{showTodoModal && (
 				<TodoModal
 					actionName="Add"
+					action={addTodo}
 					isOpen={showTodoModal}
 					setShownState={setShowTodoModal}
 				/>

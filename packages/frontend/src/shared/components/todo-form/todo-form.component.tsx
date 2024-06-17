@@ -3,16 +3,19 @@ import React from 'react';
 import { Field, Form } from 'react-final-form';
 import { TodoDto } from '~shared/types/todo.type';
 import { formStyles } from './todo-form.styles';
-import { useTodosStore } from '~store/counter.store';
+import todoSchema from '~shared/joi-schemas/todo.schema';
 
 type TodoFormProps = {
 	actionName: string;
+	action: (todo: TodoDto) => void;
 	setShownState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
-	const { addTodo } = useTodosStore();
-
+const TodoForm: React.FC<TodoFormProps> = ({
+	actionName,
+	setShownState,
+	action,
+}) => {
 	const initialValue: TodoDto = {
 		title: '',
 		content: '',
@@ -22,8 +25,15 @@ const TodoForm: React.FC<TodoFormProps> = ({ actionName, setShownState }) => {
 	};
 
 	const submit = (values: TodoDto): void => {
+		const error = todoSchema.validate(values, { abortEarly: true });
+
+		if (error) {
+			alert(error.error.message);
+			return;
+		}
+
 		console.log(values);
-		addTodo(values);
+		action(values);
 		setShownState(false);
 	};
 
