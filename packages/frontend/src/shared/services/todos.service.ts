@@ -18,6 +18,14 @@ class TodosService {
 		return response.data;
 	};
 
+	public updateTodo = async (id: number, todo: TodoDto): Promise<Todo> => {
+		const response = await this.axiosInstance.put<Todo>(
+			`/todos/${id}`,
+			todo,
+		);
+		return response.data;
+	};
+
 	public deleteTodo = async (id: number): Promise<void> => {
 		await this.axiosInstance.delete(`/todos/${id}`);
 	};

@@ -33,6 +33,7 @@ interface ITodosStore {
 	getTodos: () => void;
 	addTodo: (todo: TodoDto) => void;
 	deleteTodo: (id: number) => void;
+	updateTodo: (id: number, todo: TodoDto) => void;
 }
 
 export const useTodosStore = create<ITodosStore>((set) => {
@@ -57,6 +58,16 @@ export const useTodosStore = create<ITodosStore>((set) => {
 			set((state) => {
 				return {
 					todos: state.todos.filter((todo) => todo.id !== id),
+				};
+			});
+		},
+		updateTodo: async (id: number, todo: TodoDto): Promise<void> => {
+			const updatedTodo = await todosService.updateTodo(id, todo);
+			set((state) => {
+				return {
+					todos: state.todos.map((todo) => {
+						return todo.id === id ? updatedTodo : todo;
+					}),
 				};
 			});
 		},

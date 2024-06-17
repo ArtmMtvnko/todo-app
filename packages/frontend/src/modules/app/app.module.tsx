@@ -10,6 +10,13 @@ import TodoViewModal from '~shared/components/todo-view-modal/todo-view-modal.co
 import TodoModal from '~shared/components/todo-modal/todo-modal.component';
 // todosService.deleteTodo(6);
 todosService.getAllTodos().then((data) => console.log(data)); // to delete
+// todosService.updateTodo(10, {
+// 	title: 'test updated',
+// 	content: 'test updated',
+// 	authorId: 1,
+// 	completed: true,
+// 	private: false,
+// });
 // todosService
 // 	.createTodo({
 // 		title: 'test',

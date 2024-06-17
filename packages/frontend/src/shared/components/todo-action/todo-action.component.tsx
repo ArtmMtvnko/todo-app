@@ -11,13 +11,28 @@ type TodoActionProps = {
 
 const TodoAction: React.FC<TodoActionProps> = ({ todo }) => {
 	const { open } = useTodoModalStore();
-	const { deleteTodo } = useTodosStore();
+	const { deleteTodo, updateTodo } = useTodosStore();
+
+	const changeCompletion = (): void => {
+		updateTodo(todo.id, {
+			title: todo.title,
+			content: todo.content,
+			completed: !todo.completed,
+			private: todo.private,
+			authorId: todo.authorId,
+		});
+	};
 
 	return (
 		<div className={actionStyles}>
 			<Button onClick={() => open(todo)}>View</Button>
 			<Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
-			<Switch large={true} style={{ margin: 0 }} />
+			<Switch
+				onChange={changeCompletion}
+				checked={todo.completed}
+				large={true}
+				style={{ margin: 0 }}
+			/>
 		</div>
 	);
 };
