@@ -1,20 +1,16 @@
 import React from 'react';
-import TodoActionRow from './todo-table-action/todo-table-action.component';
-import { Button, Switch } from '@blueprintjs/core';
 import { Todo } from '~shared/types/todo.type';
-import { useTodoModalStore } from '~store/todo-modal.store';
+import TodoAction from '~shared/components/todo-action/todo-action.component';
 
 type TodoRowProps = {
 	todo: Todo;
 };
 
 const TodoTableRow: React.FC<TodoRowProps> = ({ todo }) => {
-	const { open } = useTodoModalStore();
-
 	return (
 		<tr>
 			<td style={{ width: '15%' }}>
-				<span style={{ display: 'block', width: 100 }}>
+				<span style={{ display: 'block', width: 150 }}>
 					{todo.title}
 				</span>
 			</td>
@@ -24,11 +20,7 @@ const TodoTableRow: React.FC<TodoRowProps> = ({ todo }) => {
 				</span>
 			</td>
 			<td style={{ width: '25%' }}>
-				<TodoActionRow>
-					<Button onClick={() => open(todo)}>View</Button>
-					<Button>Delete</Button>
-					<Switch large={true} style={{ margin: 0 }} />
-				</TodoActionRow>
+				<TodoAction todo={todo} />
 			</td>
 		</tr>
 	);
