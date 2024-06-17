@@ -9,7 +9,9 @@ export default class TodoService {
 	}
 
 	async findAll(): Promise<TodoType[]> {
-		const todos: TodoType[] = await this.prisma.todo.findMany();
+		const todos: TodoType[] = await this.prisma.todo.findMany({
+			orderBy: { createdAt: 'asc' },
+		});
 		return todos;
 	}
 
