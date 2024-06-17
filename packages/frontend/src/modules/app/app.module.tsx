@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Dialog, DialogBody, Checkbox, Button } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 
 import Btn from '~shared/components/button/button.component';
 import todosService from '~shared/services/todos.service'; // to delete
-import { useTodosStore } from '~store/counter.store';
+import { useTodosStore } from '~store/todos.store';
 import TodoTable from '~modules/components/todo-table/todo-table.component';
 import { useTodoModalStore } from '~store/todo-modal.store';
 import TodoViewModal from '~shared/components/todo-view-modal/todo-view-modal.component';
@@ -40,12 +40,6 @@ const App = (): React.ReactNode => {
 			<h1>Todo project</h1>
 			<p>{count}</p>
 			<Btn text="Increase" onClick={onIncrease} />
-			<Dialog onClose={() => console.log('asdf')} isOpen={false}>
-				<DialogBody>
-					<h1>Dialog</h1>
-					<Checkbox />
-				</DialogBody>
-			</Dialog>
 			<Button onClick={() => setShowTodoModal(true)}>Add</Button>
 			<TodoTable />
 			{showTodoModal && (

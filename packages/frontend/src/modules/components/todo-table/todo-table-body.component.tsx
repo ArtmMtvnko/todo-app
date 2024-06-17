@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoTableRow from './todo-table-row.component';
-import { useTodosStore } from '~store/counter.store';
+import { useTodosStore } from '~store/todos.store';
 import { tableBodyStyles } from './todo-table.styles';
 
 const TodoTableBody: React.FC = () => {
