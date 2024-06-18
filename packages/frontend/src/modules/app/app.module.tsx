@@ -10,6 +10,7 @@ import TodoViewModal from '~shared/components/todo-view-modal/todo-view-modal.co
 import TodoModal from '~shared/components/todo-modal/todo-modal.component';
 import { useMediaQuery } from 'react-responsive';
 import { appStyles } from './app.styles';
+import TodoList from '~modules/components/todo-list/todo-list.component';
 // todosService.deleteTodo(6);
 todosService.getAllTodos().then((data) => console.log(data)); // to delete
 // todosService.updateTodo(10, {
@@ -36,7 +37,11 @@ const App = (): React.ReactNode => {
 	const { todoModalData, close } = useTodoModalStore();
 
 	const isDesktop = useMediaQuery({
-		query: '(min-width: 768px)',
+		minWidth: 768,
+	});
+
+	const isMobile = useMediaQuery({
+		maxWidth: 425,
 	});
 
 	const onIncrease = (): void => {
@@ -55,6 +60,7 @@ const App = (): React.ReactNode => {
 			<p>{count}</p>
 			<Btn text="Increase" onClick={onIncrease} />
 			<Button onClick={() => setShowTodoModal(true)}>Add</Button>
+			{isMobile && <TodoList />}
 			{isDesktop && <TodoTable />}
 			{showTodoModal && (
 				<TodoModal
