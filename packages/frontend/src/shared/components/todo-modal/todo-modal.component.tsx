@@ -2,6 +2,7 @@ import { Button, Dialog, DialogBody } from '@blueprintjs/core';
 import React from 'react';
 import TodoForm from '../todo-form/todo-form.component';
 import { TodoDto } from '~shared/types/todo.type';
+import { dialogStyles } from './todo-modal.styles';
 
 type TodoModalProps = {
 	actionName: string;
@@ -17,7 +18,7 @@ const TodoModal: React.FC<TodoModalProps> = ({
 	setShownState,
 }) => {
 	return (
-		<Dialog isOpen={isOpen} style={{ width: '80vw' }}>
+		<Dialog isOpen={isOpen} className={dialogStyles}>
 			<DialogBody>
 				<TodoForm
 					actionName={actionName}

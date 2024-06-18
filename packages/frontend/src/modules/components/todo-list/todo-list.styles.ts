@@ -1,10 +1,6 @@
 import { css } from '@emotion/css';
 import { colors } from '~shared/styles';
 
-export const todoListStyles = css`
-	margin: 20px;
-`;
-
 export const todoListItemStyles = css`
 	display: grid;
 	grid-template: 1fr 5fr 1fr / 1fr;
@@ -21,9 +17,6 @@ export const descriptionStyles = css`
 	height: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-
-	& > pre {
-		white-space: pre-wrap;
-		word-wrap: break-word;
-	}
+	white-space: pre-wrap;
+	word-wrap: break-word;
 `;

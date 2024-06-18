@@ -14,9 +14,7 @@ const TodoViewModal: React.FC<TodoViewModalProps> = ({ close, todo }) => {
 			<DialogBody>
 				<h1>{todo.title}</h1>
 				<p>Description:</p>
-				<p className={descriptionStyles}>
-					<pre>{todo.content}</pre>
-				</p>
+				<pre className={descriptionStyles}>{todo.content}</pre>
 				<p>Comptele: {todo.completed.toString()}</p>
 				<p>Private: {todo.private.toString()}</p>
 				<Button onClick={close}>Close</Button>

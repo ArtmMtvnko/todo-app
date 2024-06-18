@@ -64,4 +64,10 @@ export const tableRowStyles = css`
 	& td:nth-child(2) > span {
 		width: 50vw;
 	}
+
+	@media (max-width: 900px) {
+		& td:nth-child(2) > span {
+			width: 40vw;
+		}
+	}
 `;

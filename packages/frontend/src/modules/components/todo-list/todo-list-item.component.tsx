@@ -11,9 +11,7 @@ const TodoListItem: React.FC<TodoListItemProps> = ({ todo }) => {
 	return (
 		<div className={todoListItemStyles}>
 			<h2>{todo.title}</h2>
-			<p className={descriptionStyles}>
-				<pre>{todo.content}</pre>
-			</p>
+			<pre className={descriptionStyles}>{todo.content}</pre>
 			<TodoAction todo={todo} />
 		</div>
 	);

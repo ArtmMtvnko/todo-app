@@ -52,7 +52,7 @@ const TodoForm: React.FC<TodoFormProps> = ({
 								placeholder="Enter title name"
 							/>
 						</div>
-						<div>
+						<div className="description">
 							<label>Description</label>
 							<Field
 								name="content"
