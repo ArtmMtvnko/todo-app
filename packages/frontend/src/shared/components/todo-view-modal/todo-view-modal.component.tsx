@@ -1,19 +1,20 @@
 import { Button, Dialog, DialogBody } from '@blueprintjs/core';
 import React from 'react';
 import { Todo } from '~shared/types/todo.type';
+import { descriptionStyles } from './todo-view-modal.styles';
 
-type TodoModalProps = {
+type TodoViewModalProps = {
 	close: () => void;
 	todo: Todo | null;
 };
 
-const TodoViewModal: React.FC<TodoModalProps> = ({ close, todo }) => {
+const TodoViewModal: React.FC<TodoViewModalProps> = ({ close, todo }) => {
 	return (
 		<Dialog isOpen={true}>
 			<DialogBody>
 				<h1>{todo.title}</h1>
 				<p>Description:</p>
-				<p>
+				<p className={descriptionStyles}>
 					<pre>{todo.content}</pre>
 				</p>
 				<p>Comptele: {todo.completed.toString()}</p>

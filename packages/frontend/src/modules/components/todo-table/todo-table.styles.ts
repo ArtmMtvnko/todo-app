@@ -17,6 +17,10 @@ export const tableStyles = css`
 export const tableHeadStyles = css`
 	& tr {
 		background-color: ${colors.fogGrey};
+
+		& .actions {
+			text-align: center;
+		}
 	}
 `;
 
@@ -33,5 +37,31 @@ export const tableBodyStyles = css`
 
 	& tr:nth-child(2n) {
 		background-color: ${colors.bowAndArrowSilver};
+	}
+`;
+
+export const tableRowStyles = css`
+	& > td:nth-child(1) {
+		width: 15%;
+	}
+
+	& > td:nth-child(2) {
+		width: 60%;
+	}
+
+	& > td:nth-child(3) {
+		width: 25%;
+	}
+
+	& td > span {
+		display: block;
+	}
+
+	& td:nth-child(1) > span {
+		width: 150px;
+	}
+
+	& td:nth-child(2) > span {
+		width: 50vw;
 	}
 `;

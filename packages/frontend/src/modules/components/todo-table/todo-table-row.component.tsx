@@ -1,6 +1,7 @@
 import React from 'react';
 import { Todo } from '~shared/types/todo.type';
 import TodoAction from '~shared/components/todo-action/todo-action.component';
+import { tableRowStyles } from './todo-table.styles';
 
 type TodoRowProps = {
 	todo: Todo;
@@ -8,18 +9,14 @@ type TodoRowProps = {
 
 const TodoTableRow: React.FC<TodoRowProps> = ({ todo }) => {
 	return (
-		<tr>
-			<td style={{ width: '15%' }}>
-				<span style={{ display: 'block', width: 150 }}>
-					{todo.title}
-				</span>
+		<tr className={tableRowStyles}>
+			<td>
+				<span>{todo.title}</span>
 			</td>
-			<td style={{ width: '60%' }}>
-				<span style={{ display: 'block', width: 600 }}>
-					{todo.content}
-				</span>
+			<td>
+				<span>{todo.content}</span>
 			</td>
-			<td style={{ width: '25%' }}>
+			<td>
 				<TodoAction todo={todo} />
 			</td>
 		</tr>

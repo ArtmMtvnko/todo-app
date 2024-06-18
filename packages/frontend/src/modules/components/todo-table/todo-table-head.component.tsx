@@ -7,7 +7,7 @@ const TodoTableHead: React.FC = () => {
 			<tr>
 				<th>Todo Title</th>
 				<th>Description</th>
-				<th style={{ textAlign: 'center' }}>Actions</th>
+				<th className="actions">Actions</th>
 			</tr>
 		</thead>
 	);

@@ -8,6 +8,8 @@ import TodoTable from '~modules/components/todo-table/todo-table.component';
 import { useTodoModalStore } from '~store/todo-modal.store';
 import TodoViewModal from '~shared/components/todo-view-modal/todo-view-modal.component';
 import TodoModal from '~shared/components/todo-modal/todo-modal.component';
+import { useMediaQuery } from 'react-responsive';
+import { appStyles } from './app.styles';
 // todosService.deleteTodo(6);
 todosService.getAllTodos().then((data) => console.log(data)); // to delete
 // todosService.updateTodo(10, {
@@ -26,11 +28,16 @@ todosService.getAllTodos().then((data) => console.log(data)); // to delete
 // 		private: false,
 // 	})
 // 	.then((data) => console.log(data)); // to delete
+// TODO: remove inline styles!!! <div style={{ width: 10, ... }}></div>
 const App = (): React.ReactNode => {
 	const [count, setCount] = React.useState(0);
 	const { getTodos, addTodo } = useTodosStore();
 	const [showTodoModal, setShowTodoModal] = React.useState(false);
 	const { todoModalData, close } = useTodoModalStore();
+
+	const isDesktop = useMediaQuery({
+		query: '(min-width: 768px)',
+	});
 
 	const onIncrease = (): void => {
 		setCount((prev) => {
@@ -43,12 +50,12 @@ const App = (): React.ReactNode => {
 	}, []);
 
 	return (
-		<div style={{ maxWidth: 1240, margin: '0 auto' }}>
+		<div className={appStyles}>
 			<h1>Todo project</h1>
 			<p>{count}</p>
 			<Btn text="Increase" onClick={onIncrease} />
 			<Button onClick={() => setShowTodoModal(true)}>Add</Button>
-			<TodoTable />
+			{isDesktop && <TodoTable />}
 			{showTodoModal && (
 				<TodoModal
 					actionName="Add"
