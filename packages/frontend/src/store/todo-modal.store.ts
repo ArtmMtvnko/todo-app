@@ -19,7 +19,6 @@ export const useTodoModalStore = create<TodoModalStore>((set) => {
 			todo: null,
 		},
 		open: (todo: Todo): void => {
-			console.log('i am in');
 			set({
 				todoModalData: {
 					show: true,

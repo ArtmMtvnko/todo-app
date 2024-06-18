@@ -1,14 +1,15 @@
 import { css } from '@emotion/css';
 import { colors } from '~shared/styles';
 
-export const todoListItemStyles = css`
+export const CarouselCardStyles = css`
 	display: grid;
 	grid-template: 1fr 5fr 1fr / 1fr;
 	place-items: start;
-	margin: 20px 0;
-	padding: 0 0 10px 0;
-	height: 160px;
-	border-bottom: 1px dashed ${colors.black};
+	align-items: center;
+	height: 50vh;
+	margin: 20px 40px;
+	padding: 20px;
+	border: 1px solid ${colors.black};
 `;
 
 export const descriptionStyles = css`
