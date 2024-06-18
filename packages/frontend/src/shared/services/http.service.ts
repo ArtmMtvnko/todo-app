@@ -33,67 +33,67 @@ export class HttpService {
 		return configWithoutDataAndUrl;
 	}
 
-	protected get(
+	protected get<T>(
 		config: AxiosRequestConfig,
 		withAuth: boolean = true,
-	): Promise<AxiosResponse> {
+	): Promise<AxiosResponse<T>> {
 		if (withAuth) {
 			config.headers = {
 				...config.headers,
 				...this.populateTokenToHeaderConfig(),
 			};
 		}
-		return this.fetchingService.get(
+		return this.fetchingService.get<T>(
 			this.getFullApiUrl(config.url),
 			this.extractUrlAndDataFromConfig(config),
 		);
 	}
 
-	protected post(
+	protected post<T>(
 		config: AxiosRequestConfig,
 		withAuth: boolean = true,
-	): Promise<AxiosResponse> {
+	): Promise<AxiosResponse<T>> {
 		if (withAuth) {
 			config.headers = {
 				...config.headers,
 				...this.populateTokenToHeaderConfig(),
 			};
 		}
-		return this.fetchingService.post(
-			this.getFullApiUrl(config.url),
-			config.data,
-			this.extractUrlAndDataFromConfig(config),
-		);
-	}
-
-	protected put(
-		config: AxiosRequestConfig,
-		withAuth: boolean = true,
-	): Promise<AxiosResponse> {
-		if (withAuth) {
-			config.headers = {
-				...config.headers,
-				...this.populateTokenToHeaderConfig(),
-			};
-		}
-		return this.fetchingService.put(
+		return this.fetchingService.post<T>(
 			this.getFullApiUrl(config.url),
 			config.data,
 			this.extractUrlAndDataFromConfig(config),
 		);
 	}
 
-	protected delete(
+	protected put<T>(
 		config: AxiosRequestConfig,
 		withAuth: boolean = true,
-	): Promise<AxiosResponse> {
+	): Promise<AxiosResponse<T>> {
 		if (withAuth) {
 			config.headers = {
 				...config.headers,
 				...this.populateTokenToHeaderConfig(),
 			};
 		}
-		return this.fetchingService.delete(
+		return this.fetchingService.put<T>(
+			this.getFullApiUrl(config.url),
+			config.data,
+			this.extractUrlAndDataFromConfig(config),
+		);
+	}
+
+	protected delete<T>(
+		config: AxiosRequestConfig,
+		withAuth: boolean = true,
+	): Promise<AxiosResponse<T>> {
+		if (withAuth) {
+			config.headers = {
+				...config.headers,
+				...this.populateTokenToHeaderConfig(),
+			};
+		}
+		return this.fetchingService.delete<T>(
 			this.getFullApiUrl(config.url),
 			this.extractUrlAndDataFromConfig(config),
 		);
