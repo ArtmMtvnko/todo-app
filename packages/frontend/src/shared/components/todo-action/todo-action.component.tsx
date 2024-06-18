@@ -1,5 +1,5 @@
 import React from 'react';
-import { actionStyles } from './todo-action.styles';
+import { actionStyles, switcherStyles } from './todo-action.styles';
 import { Todo } from '~shared/types/todo.type';
 import { Button, Switch } from '@blueprintjs/core';
 import { useTodoModalStore } from '~store/todo-modal.store';
@@ -31,7 +31,7 @@ const TodoAction: React.FC<TodoActionProps> = ({ todo }) => {
 				onChange={changeCompletion}
 				checked={todo.completed}
 				large={true}
-				style={{ margin: 0 }}
+				className={switcherStyles}
 			/>
 		</div>
 	);
