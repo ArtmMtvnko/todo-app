@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import todosService from '~shared/services/todos.service';
+import { todoService } from '~shared/services/todos.service';
 import { Todo, TodoDto } from '~shared/types/todo.type';
 
 interface CounterStore {
@@ -40,13 +40,13 @@ export const useTodosStore = create<ITodosStore>((set) => {
 	return {
 		todos: [],
 		getTodos: async (): Promise<void> => {
-			const fetchedTodos = await todosService.getAllTodos();
+			const fetchedTodos = await todoService.getAllTodos();
 			set({
 				todos: fetchedTodos,
 			});
 		},
 		addTodo: async (todo: TodoDto): Promise<void> => {
-			const createdTodo = await todosService.createTodo(todo);
+			const createdTodo = await todoService.createTodo(todo);
 			set((state) => {
 				return {
 					todos: [...state.todos, createdTodo],
@@ -54,7 +54,7 @@ export const useTodosStore = create<ITodosStore>((set) => {
 			});
 		},
 		deleteTodo: async (id: number): Promise<void> => {
-			await todosService.deleteTodo(id);
+			await todoService.deleteTodo(id);
 			set((state) => {
 				return {
 					todos: state.todos.filter((todo) => todo.id !== id),
@@ -62,7 +62,7 @@ export const useTodosStore = create<ITodosStore>((set) => {
 			});
 		},
 		updateTodo: async (id: number, todo: TodoDto): Promise<void> => {
-			const updatedTodo = await todosService.updateTodo(id, todo);
+			const updatedTodo = await todoService.updateTodo(id, todo);
 			set((state) => {
 				return {
 					todos: state.todos.map((todo) => {

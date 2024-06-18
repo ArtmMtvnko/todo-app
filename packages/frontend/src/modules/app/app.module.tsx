@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Button } from '@blueprintjs/core';
-
 import Btn from '~shared/components/button/button.component';
-import todosService from '~shared/services/todos.service'; // to delete
+import { todoService } from '~shared/services/todos.service'; // to delete
 import { useTodosStore } from '~store/todos.store';
 import TodoTable from '~modules/components/todo-table/todo-table.component';
 import { useTodoModalStore } from '~store/todo-modal.store';
@@ -11,9 +10,9 @@ import TodoModal from '~shared/components/todo-modal/todo-modal.component';
 import { useMediaQuery } from 'react-responsive';
 import { appStyles } from './app.styles';
 import TodoList from '~modules/components/todo-list/todo-list.component';
-import Carousel from '~modules/components/todo-carousel/todo-carousel.component';
+import TodoCarousel from '~modules/components/todo-carousel/todo-carousel.component';
 // todosService.deleteTodo(6);
-todosService.getAllTodos().then((data) => console.log(data)); // to delete
+todoService.getAllTodos().then((data) => console.log(data)); // to delete
 // todosService.updateTodo(10, {
 // 	title: 'test updated',
 // 	content: 'test updated',
@@ -67,7 +66,7 @@ const App = (): React.ReactNode => {
 			<Btn text="Increase" onClick={onIncrease} />
 			<Button onClick={() => setShowTodoModal(true)}>Add</Button>
 			{isMobile && <TodoList />}
-			{isTablet && <Carousel />}
+			{isTablet && <TodoCarousel />}
 			{isDesktop && <TodoTable />}
 			{showTodoModal && (
 				<TodoModal

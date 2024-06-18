@@ -32,7 +32,7 @@ const TodoForm: React.FC<TodoFormProps> = ({
 			return;
 		}
 
-		console.log(values);
+		console.log(values); // To delete
 		action(values);
 		setShownState(false);
 	};

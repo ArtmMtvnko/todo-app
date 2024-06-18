@@ -6,7 +6,7 @@ import CarouselCard from './todo-carousel-card.component';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Carousel: React.FC = () => {
+const TodoCarousel: React.FC = () => {
 	const { todos } = useTodosStore();
 
 	const settings = {
@@ -28,4 +28,4 @@ const Carousel: React.FC = () => {
 	);
 };
 
-export default Carousel;
+export default TodoCarousel;
