@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '@blueprintjs/core';
 import Btn from '~shared/components/button/button.component';
-import { todoService } from '~shared/services/todos.service'; // to delete
+import { todoService } from '~shared/services/todo.service'; // to delete
 import { useTodosStore } from '~store/todos.store';
 import TodoTable from '~modules/components/todo-table/todo-table.component';
 import { useTodoModalStore } from '~store/todo-modal.store';

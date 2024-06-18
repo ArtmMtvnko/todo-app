@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { todoService } from '~shared/services/todos.service';
+import { todoService } from '~shared/services/todo.service';
 import { Todo, TodoDto } from '~shared/types/todo.type';
 
 interface CounterStore {
