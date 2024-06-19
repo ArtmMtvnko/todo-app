@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { todoService } from '~shared/services/todo.service';
 import { Todo, TodoDto } from '~shared/types/todo.type';
 
+// TODO: To delete
 interface CounterStore {
 	counter: number;
 	updateCounter: (offset: number) => () => void;

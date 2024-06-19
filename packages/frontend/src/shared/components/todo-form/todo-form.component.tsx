@@ -4,23 +4,21 @@ import { Field, Form } from 'react-final-form';
 import { TodoDto } from '~shared/types/todo.type';
 import { formStyles } from './todo-form.styles';
 import todoSchema from '~shared/joi-schemas/todo.schema';
+import { useTodosStore } from '~store/todos.store';
+import { useTodoModalStore } from '~store/todo-modal.store';
 
-type TodoFormProps = {
-	actionName: string;
-	action: (todo: TodoDto) => void;
-	setShownState: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const TodoForm: React.FC<TodoFormProps> = ({
-	actionName,
-	setShownState,
-	action,
-}) => {
+const TodoForm: React.FC = () => {
+	const { addTodo, updateTodo } = useTodosStore();
+	const {
+		todoModalInfo: { todo, mode },
+		close,
+	} = useTodoModalStore();
+	console.log('todo edit', todo); // to delete
 	const initialValue: TodoDto = {
-		title: '',
-		content: '',
-		completed: false,
-		private: false,
+		title: todo === null ? '' : todo.title,
+		content: todo === null ? '' : todo.content,
+		completed: todo === null ? false : todo.completed,
+		private: todo === null ? false : todo.private,
 		authorId: 1,
 	};
 
@@ -31,10 +29,16 @@ const TodoForm: React.FC<TodoFormProps> = ({
 			alert(error.message);
 			return;
 		}
-
 		console.log(values); // To delete
-		action(values);
-		setShownState(false);
+
+		if (todo === null) {
+			addTodo(values);
+			close();
+			return;
+		}
+
+		updateTodo(todo.id, values);
+		close();
 	};
 
 	return (
@@ -76,7 +80,7 @@ const TodoForm: React.FC<TodoFormProps> = ({
 								type="checkbox"
 							/>
 						</div>
-						<Button type="submit">{actionName}</Button>
+						<Button type="submit">{mode}</Button>
 					</form>
 				);
 			}}

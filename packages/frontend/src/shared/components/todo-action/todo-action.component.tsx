@@ -2,7 +2,7 @@ import React from 'react';
 import { actionStyles, switcherStyles } from './todo-action.styles';
 import { Todo } from '~shared/types/todo.type';
 import { Button, Switch } from '@blueprintjs/core';
-import { useTodoModalStore } from '~store/todo-modal.store';
+import { useTodoViewModalStore } from '~store/todo-view-modal.store';
 import { useTodosStore } from '~store/todos.store';
 
 type TodoActionProps = {
@@ -10,7 +10,7 @@ type TodoActionProps = {
 };
 
 const TodoAction: React.FC<TodoActionProps> = ({ todo }) => {
-	const { open } = useTodoModalStore();
+	const { open } = useTodoViewModalStore();
 	const { deleteTodo, updateTodo } = useTodosStore();
 
 	const changeCompletion = (): void => {

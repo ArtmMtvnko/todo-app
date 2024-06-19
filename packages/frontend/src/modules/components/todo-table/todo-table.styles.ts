@@ -71,3 +71,7 @@ export const tableRowStyles = css`
 		}
 	}
 `;
+
+export const titleStyles = css`
+	cursor: pointer;
+`;
