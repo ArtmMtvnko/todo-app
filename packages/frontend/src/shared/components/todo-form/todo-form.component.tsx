@@ -13,7 +13,7 @@ const TodoForm: React.FC = () => {
 		todoModalInfo: { todo, mode },
 		close,
 	} = useTodoModalStore();
-	console.log('todo edit', todo); // to delete
+
 	const initialValue: TodoDto = {
 		title: todo === null ? '' : todo.title,
 		content: todo === null ? '' : todo.content,
@@ -29,7 +29,6 @@ const TodoForm: React.FC = () => {
 			alert(error.message);
 			return;
 		}
-		console.log(values); // To delete
 
 		if (todo === null) {
 			addTodo(values);

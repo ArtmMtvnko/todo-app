@@ -2,33 +2,6 @@ import { create } from 'zustand';
 import { todoService } from '~shared/services/todo.service';
 import { Todo, TodoDto } from '~shared/types/todo.type';
 
-// TODO: To delete
-interface CounterStore {
-	counter: number;
-	updateCounter: (offset: number) => () => void;
-	resetCounter: () => void;
-}
-
-export const useCounterStore = create<CounterStore>((set) => {
-	return {
-		counter: 0,
-		updateCounter: (offset: number) => {
-			return (): void => {
-				set((state) => {
-					return {
-						counter: state.counter + offset,
-					};
-				});
-			};
-		},
-		resetCounter: (): void => {
-			set({
-				counter: 0,
-			});
-		},
-	};
-});
-
 interface ITodosStore {
 	todos: Todo[];
 	getTodos: () => void;
