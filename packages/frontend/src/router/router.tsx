@@ -6,8 +6,6 @@ import { ROUTER_KEYS } from '~shared/keys';
 const Router: React.FunctionComponent = () => {
 	return (
 		<>
-			{/* // Implement Routes */}
-			{/* <App /> */}
 			<BrowserRouter>
 				<Routes>
 					<Route path={ROUTER_KEYS.DASHBOARD} element={<App />} />

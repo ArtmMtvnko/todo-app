@@ -14,13 +14,15 @@ const TodoForm: React.FC = () => {
 		close,
 	} = useTodoModalStore();
 
-	const initialValue: TodoDto = {
-		title: todo === null ? '' : todo.title,
-		content: todo === null ? '' : todo.content,
-		completed: todo === null ? false : todo.completed,
-		private: todo === null ? false : todo.private,
-		authorId: 1,
-	};
+	const initialValue = React.useMemo<TodoDto>(() => {
+		return {
+			title: todo === null ? '' : todo.title,
+			content: todo === null ? '' : todo.content,
+			completed: todo === null ? false : todo.completed,
+			private: todo === null ? false : todo.private,
+			authorId: 1,
+		};
+	}, [todo]);
 
 	const submit = (values: TodoDto): void => {
 		const { error } = todoSchema.validate(values, { abortEarly: true });
