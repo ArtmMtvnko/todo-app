@@ -1,11 +1,17 @@
 import { Button } from '@blueprintjs/core';
 import React from 'react';
-import { Field, Form } from 'react-final-form';
+import { Form } from 'react-final-form';
 import { TodoDto } from '~shared/types/todo.type';
 import { formStyles } from './todo-form.styles';
 import todoSchema from '~shared/joi-schemas/todo.schema';
 import { useTodosStore } from '~store/todos.store';
 import { useTodoModalStore } from '~store/todo-modal.store';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Input from '../input/Input.component';
+import TextArea from '../textarea/textarea.components';
+import CheckBox from '../checkbox/checkbox.component';
+import { errorMessageStyles } from '../error-message/error-message.styles';
 
 const TodoForm: React.FC = () => {
 	const { addTodo, updateTodo } = useTodosStore();
@@ -24,13 +30,21 @@ const TodoForm: React.FC = () => {
 		};
 	}, [todo]);
 
-	const submit = (values: TodoDto): void => {
+	const validate = (values: TodoDto): boolean => {
 		const { error } = todoSchema.validate(values, { abortEarly: true });
 
 		if (error) {
-			alert(error.message);
-			return;
+			toast(error.message, {
+				autoClose: 3000,
+			});
+			return false;
 		}
+
+		return true;
+	};
+
+	const submit = (values: TodoDto): void => {
+		if (!validate(values)) return;
 
 		if (todo === null) {
 			addTodo(values);
@@ -51,37 +65,28 @@ const TodoForm: React.FC = () => {
 					<form className={formStyles} onSubmit={handleSubmit}>
 						<div>
 							<label>Title</label>
-							<Field
+							<Input
 								name="title"
-								component="input"
 								placeholder="Enter title name"
 							/>
 						</div>
 						<div className="description">
 							<label>Description</label>
-							<Field
+							<TextArea
 								name="content"
-								component="textarea"
 								placeholder="Enter description here"
 							/>
 						</div>
 						<div>
 							<label>Completed</label>
-							<Field
-								name="completed"
-								component="input"
-								type="checkbox"
-							/>
+							<CheckBox name="completed" />
 						</div>
 						<div>
 							<label>Private</label>
-							<Field
-								name="private"
-								component="input"
-								type="checkbox"
-							/>
+							<CheckBox name="private" />
 						</div>
 						<Button type="submit">{mode}</Button>
+						<ToastContainer className={errorMessageStyles} />
 					</form>
 				);
 			}}
