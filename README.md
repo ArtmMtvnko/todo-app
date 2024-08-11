@@ -1,3 +1,21 @@
+# Some snapshots of the application
+
+### Table for desktops
+![main page desktop](https://github.com/user-attachments/assets/844098cb-ea7a-434d-af95-f0d0895cb903)
+
+### Carousel for tablets
+![main page tablet 1](https://github.com/user-attachments/assets/5a53a409-c6ac-4c1e-8396-4f825d3261aa)
+
+### Infinite scroll for sellphones
+![main page cellphone](https://github.com/user-attachments/assets/3b9803d9-ec36-423b-87a8-f59b867f9b96)
+
+### View modal window
+![view modal](https://github.com/user-attachments/assets/f1fb0563-d8e4-4509-813f-2ca7fdf9f66e)
+
+### New todo form
+![todo form modal](https://github.com/user-attachments/assets/bbf1b1ac-1d82-401c-ba77-3e976e94e0bd)
+
+
 # CGS Test project
 
 ## Project main stack
